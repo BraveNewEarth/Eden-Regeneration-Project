@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Eden Regeneration Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .section {
+            min-height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        /* Opening Scene */
+        .hero {
+            background: linear-gradient(45deg, #1a4d3a, #2d5f4f, #1a4d3a);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 2s ease forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 2s ease 0.5s forwards;
+            color: #66d9aa;
+        }
+
+        .hero-quote {
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 2s ease 1s forwards;
+            color: #cccccc;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(102, 217, 170, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+
+        /* Story Section */
+        .story {
+            background: linear-gradient(to bottom, #1a4d3a, #000);
+            flex-direction: column;
+        }
+
+        .story-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .story h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #66d9aa;
+        }
+
+        .story-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .bruce-intro {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 1.5rem 0;
+            border-left: 5px solid #66d9aa;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(135deg, #2c1810, #4a2c1a);
+            flex-direction: column;
+        }
+
+        .problem-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .problem h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ff6b6b;
+        }
+
+        .crisis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .crisis-item {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #ff6b6b;
+            transition: transform 0.3s ease;
+        }
+
+        .crisis-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 107, 107, 0.2);
+        }
+
+        .crisis-item h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Vision Section */
+        .vision {
+            background: linear-gradient(to bottom, #000, #1a4d3a);
+            flex-direction: column;
+        }
+
+        .vision-content {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .vision h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #66d9aa;
+        }
+
+        .vision-intro {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .system-card {
+            background: rgba(102, 217, 170, 0.1);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 3px solid #66d9aa;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .system-card:hover {
+            transform: translateY(-15px);
+            background: rgba(102, 217, 170, 0.2);
+            box-shadow: 0 20px 40px rgba(102, 217, 170, 0.3);
+        }
+
+        .system-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #66d9aa, #4fd683);
+        }
+
+        .system-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #66d9aa;
+        }
+
+        .system-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .system-features {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .system-features li {
+            margin: 0.8rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .system-features li::before {
+            content: '🌱';
+            position: absolute;
+            left: -0.5rem;
+        }
+
+        /* Why This Matters */
+        .matters {
+            background: linear-gradient(45deg, #1a4d3a, #2d5f4f);
+            flex-direction: column;
+        }
+
+        .matters-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .matters h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #66d9aa;
+        }
+
+        .matters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .matters-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .matters-item:hover {
+            background: rgba(102, 217, 170, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Jesuit Connection */
+        .jesuit {
+            background: linear-gradient(to bottom, #2d5f4f, #4a4a4a);
+            flex-direction: column;
+        }
+
+        .jesuit-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .jesuit h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .principles {
+            display: flex;
+            justify-content: space-around;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .principle {
+            flex: 1;
+            margin: 1rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            min-width: 250px;
+        }
+
+        .principle h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Bruce's Background */
+        .background {
+            background: linear-gradient(135deg, #4a4a4a, #1a1a1a);
+            flex-direction: column;
+        }
+
+        .background-content {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .background h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .experience-card {
+            background: rgba(102, 217, 170, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #66d9aa;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            background: rgba(102, 217, 170, 0.2);
+        }
+
+        .experience-card h3 {
+            color: #66d9aa;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .special-note {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            margin: 3rem 0;
+        }
+
+        .special-note h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        /* Georgetown Advantage */
+        .advantage {
+            background: linear-gradient(to bottom, #1a1a1a, #1a4d3a);
+            flex-direction: column;
+        }
+
+        .advantage-content {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .advantage h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .advantage-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .advantage-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .advantage-section h3 {
+            color: #66d9aa;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .advantage-section ul {
+            text-align: left;
+            list-style: none;
+        }
+
+        .advantage-section li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .advantage-section li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #66d9aa;
+            font-weight: bold;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            background: linear-gradient(45deg, #2d5f4f, #66d9aa);
+            flex-direction: column;
+        }
+
+        .ripple-content {
+            max-width: 1000px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .ripple h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .ripple-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .ripple-item {
+            background: rgba(26, 77, 58, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #66d9aa;
+        }
+
+        .ripple-item h3 {
+            color: #66d9aa;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Investment vs Transformation */
+        .investment {
+            background: linear-gradient(to bottom, #66d9aa, #1a4d3a);
+            flex-direction: column;
+        }
+
+        .investment-content {
+            max-width: 1200px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .investment h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .projections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .projection-section {
+            background: rgba(26, 77, 58, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #66d9aa;
+        }
+
+        .projection-section h3 {
+            color: #66d9aa;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .projection-section ul {
+            text-align: left;
+            list-style: none;
+        }
+
+        .projection-section li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .projection-section li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Call to Lead */
+        .call-to-lead {
+            background: linear-gradient(135deg, #1a4d3a, #000);
+            flex-direction: column;
+        }
+
+        .call-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .call-to-lead h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .call-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .choice-highlight {
+            background: rgba(102, 217, 170, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #66d9aa;
+            margin: 3rem 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            background: linear-gradient(to bottom, #000, #1a4d3a);
+            flex-direction: column;
+        }
+
+        .steps-content {
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .next-steps h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .phase {
+            background: rgba(102, 217, 170, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #66d9aa;
+            transition: all 0.3s ease;
+        }
+
+        .phase:hover {
+            transform: translateY(-10px);
+            background: rgba(102, 217, 170, 0.2);
+        }
+
+        .phase h3 {
+            color: #66d9aa;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .phase ul {
+            text-align: left;
+            list-style: none;
+        }
+
+        .phase li {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .phase li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #66d9aa;
+        }
+
+        /* Personal Commitment */
+        .commitment {
+            background: linear-gradient(45deg, #1a4d3a, #2d5f4f);
+            flex-direction: column;
+        }
+
+        .commitment-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .commitment h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .commitment-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .commitment-highlight {
+            background: rgba(102, 217, 170, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #66d9aa;
+            margin: 3rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Final Vision */
+        .final-vision {
+            background: linear-gradient(to bottom, #2d5f4f, #66d9aa);
+            flex-direction: column;
+        }
+
+        .final-content {
+            max-width: 1000px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .final-vision h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .final-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .quote-section {
+            background: rgba(26, 77, 58, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #66d9aa;
+            margin: 3rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1a4d3a, #000);
+            flex-direction: column;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .contact-info {
+            background: rgba(102, 217, 170, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #66d9aa;
+            margin: 2rem 0;
+        }
+
+        .contact-info h3 {
+            color: #66d9aa;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Seed Planting */
+        .seed-planting {
+            background: linear-gradient(to bottom, #000, #1a4d3a);
+            flex-direction: column;
+        }
+
+        .planting-content {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .seed-planting h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #66d9aa;
+        }
+
+        .garden-plot {
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(to bottom, #654321, #8B4513);
+            margin: 2rem auto;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            border: 3px solid #8B4513;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .seed {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #D2691E;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .sprouting {
+            animation: sprout 2s ease forwards;
+        }
+
+        @keyframes sprout {
+            0% { transform: scale(1); background: #D2691E; }
+            50% { transform: scale(1.5); background: #90EE90; }
+            100% { 
+                transform: scale(2); 
+                background: #228B22;
+                border-radius: 0;
+                width: 20px;
+                height: 30px;
+            }
+        }
+
+        .planted-counter {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #66d9aa;
+        }
+
+        .planting-instruction {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+
+        .planting-meaning {
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #66d9aa, #4fd683);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .story h2, .problem h2, .vision h2, .matters h2, .jesuit h2, 
+            .background h2, .advantage h2, .ripple h2, .investment h2, 
+            .call-to-lead h2, .next-steps h2, .commitment h2, .final-vision h2 { 
+                font-size: 2.5rem; 
+            }
+            .systems-grid, .crisis-grid, .matters-grid, .experience-grid, 
+            .advantage-sections, .ripple-items, .phases { 
+                grid-template-columns: 1fr; 
+            }
+            .projections { grid-template-columns: 1fr; }
+            .principles { flex-direction: column; }
+            .garden-plot { width: 95%; height: 300px; }
+            .section { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1>The Eden Regeneration Project</h1>
+            <div class="hero-subtitle">A Transformative Vision for Georgetown University's Calcagnini Contemplative Center</div>
+            <div class="hero-quote">"What if the next great breakthrough in education happened not in a classroom, but in a garden? What if the path to healing our planet started with healing ourselves?"</div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section story">
+        <div class="story-content">
+            <h2>The Story That Changes Everything</h2>
+            <div class="story-text">
+                <p>Twenty-five years ago, I was loading nuclear weapons onto fighter jets. Today, I'm proposing to plant seeds of transformation at one of America's most prestigious universities. This isn't just career evolution—it's a call to revolutionize how we think about education, spirituality, and our relationship with the Earth.</p>
+            </div>
+            <div class="bruce-intro">
+                <p><strong>I'm Bruce Weaver</strong>, and I want to share a vision that could position Georgetown University as the global leader in what I call <strong>"regenerative contemplation"</strong>—where spiritual growth and ecological healing become inseparable forces for planetary transformation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem">
+        <div class="problem-content">
+            <h2>The Problem: Education at a Crossroads</h2>
+            <div class="story-text">
+                <p>We're facing unprecedented crises: climate change, mental health epidemics among students, disconnection from nature, and a growing hunger for meaning in an increasingly digital world. Meanwhile, our educational institutions continue operating as if these challenges exist in separate silos.</p>
+                <p><strong>What if they don't have to?</strong></p>
+            </div>
+            <div class="crisis-grid">
+                <div class="crisis-item">
+                    <h3>🌍 Climate Change</h3>
+                    <p>Urgent need for solutions and climate-literate graduates</p>
+                </div>
+                <div class="crisis-item">
+                    <h3>🧠 Mental Health Crisis</h3>
+                    <p>Student anxiety and depression at record levels</p>
+                </div>
+                <div class="crisis-item">
+                    <h3>🌿 Nature Disconnection</h3>
+                    <p>Digital natives losing touch with the natural world</p>
+                </div>
+                <div class="crisis-item">
+                    <h3>🎯 Purpose Deficit</h3>
+                    <p>Growing hunger for meaning and authentic purpose</p>
+                </div>
+            </div>
+            <div class="story-text">
+                <p>Georgetown's Calcagnini Contemplative Center sits on <strong>55 acres of untapped potential</strong>. Right now, it's a beautiful retreat space. But I see something far more revolutionary: <strong>a living laboratory where the future of education is being born.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section vision">
+        <div class="vision-content">
+            <h2>The Vision: Eden Regeneration Project</h2>
+            <div class="vision-intro">
+                <p>Imagine walking onto Georgetown's Calcagnini Contemplative Center and encountering not just a retreat facility, but a thriving ecosystem that teaches through every interaction:</p>
+            </div>
+            
+            <div class="systems-grid">
+                <div class="system-card">
+                    <span class="icon">🌱</span>
+                    <h3>Sacred Food Systems</h3>
+                    <ul class="system-features">
+                        <li><strong>Permaculture market gardens</strong> providing fresh, organic food for retreatants while demonstrating regenerative agriculture principles</li>
+                        <li><strong>Interfaith heritage gardens</strong> featuring Native American "Three Sisters" plantings alongside heirloom orchards—living symbols of cultural wisdom and abundance</li>
+                        <li><strong>Year-round Wallapini greenhouse</strong> using earth-sheltered design for zero-energy food production</li>
+                        <li><strong>Traditional Ecological Knowledge workshops</strong> led by Indigenous elders, honoring ancient wisdom in modern practice</li>
+                    </ul>
+                </div>
+
+                <div class="system-card">
+                    <span class="icon">🔥</span>
+                    <h3>Carbon-Negative Operations</h3>
+                    <ul class="system-features">
+                        <li><strong>Biochar production facility</strong> converting forest management waste into soil enhancement while reducing wildfire risk</li>
+                        <li><strong>Natural building workshops</strong> using thinned wood for meditation structures, benches, and even a forest chapel</li>
+                        <li><strong>Living carbon sequestration demonstrations</strong> showing how land can become a climate solution</li>
+                    </ul>
+                </div>
+
+                <div class="system-card">
+                    <span class="icon">🚶</span>
+                    <h3>Contemplative Landscape Design</h3>
+                    <ul class="system-features">
+                        <li><strong>Seven Creation Walks</strong> representing different spiritual traditions—a Labyrinth Meadow (Christian), Mindfulness Grove (Buddhist), Canticle Trail (Franciscan/Jesuit)</li>
+                        <li><strong>Forest therapy stations</strong> with soundscapes and native plant education for deep nature connection</li>
+                        <li><strong>360-degree documentation</strong> using drone technology to capture the transformation journey</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section class="section matters">
+        <div class="matters-content">
+            <h2>Why This Matters Now</h2>
+            <div class="story-text">
+                <p>This isn't just about Georgetown. This is about creating a <strong>replicable model</strong> that universities worldwide can adapt. We're designing the future of education where:</p>
+            </div>
+            <div class="matters-grid">
+                <div class="matters-item">
+                    <h3>🌱 Students learn ecology by restoring ecosystems</h3>
+                </div>
+                <div class="matters-item">
+                    <h3>🙏 Spiritual growth happens through Earth stewardship</h3>
+                </div>
+                <div class="matters-item">
+                    <h3>🧠 Mental health improves through nature connection</h3>
+                </div>
+                <div class="matters-item">
+                    <h3>🌍 Climate solutions emerge from contemplative practice</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jesuit Connection Section -->
+    <section class="section jesuit">
+        <div class="jesuit-content">
+            <h2>The Jesuit Connection</h2>
+            <div class="story-text">
+                <p>This vision perfectly embodies the Jesuit principle of <em>Cura Personalis</em> (care for the whole person) while expanding it to <em>Cura Terrae</em> (care for the Earth). It's Pope Francis's <em>Laudato Si'</em> brought to life in American higher education.</p>
+            </div>
+            <div class="principles">
+                <div class="principle">
+                    <h3>Cura Personalis</h3>
+                    <p>Care for the whole person - integrating spiritual, intellectual, and ecological development</p>
+                </div>
+                <div class="principle">
+                    <h3>Cura Terrae</h3>
+                    <p>Care for the Earth - extending Jesuit values to planetary stewardship</p>
+                </div>
+                <div class="principle">
+                    <h3>Laudato Si'</h3>
+                    <p>Pope Francis's environmental encyclical made tangible through educational practice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bruce's Background Section -->
+    <section class="section background">
+        <div class="background-content">
+            <h2>The Human Element: Why Me?</h2>
+            <div class="story-text">
+                <p>I've spent the last 25 years preparing for this moment:</p>
+            </div>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>From Nuclear Weapons to Regenerative Agriculture</h3>
+                    <p>My journey from Air Force armaments specialist to Earth steward represents the transformation our world needs—from destruction to regeneration.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>20+ Years of Estate Management</h3>
+                    <p>Managing multi-million dollar properties for ultra-high-net-worth families, always maintaining "guest-ready" standards while implementing sustainable practices.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>15+ Years of Permaculture Expertise</h3>
+                    <p>Hands-on experience in organic farming, agroforestry, and regenerative land management across diverse climates and ecosystems.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Documented Mentorship with Indigenous Elders</h3>
+                    <p>Personal relationships with Chief Arvol Looking Horse, Sequoyah Trueblood, and other wisdom keepers who've shaped my understanding of land as sacred.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>MacGyver Problem-Solving</h3>
+                    <p>Earned reputation for transforming "broken places into better places" through creative, resourceful solutions.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Tech Integration</h3>
+                    <p>Drone operation, smart systems, and digital documentation capabilities essential for modern land management and storytelling.</p>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <h3>What Makes This Truly Special</h3>
+                <p><strong>I see every property as both a working system and a healing ecosystem.</strong> This isn't just land management—it's <strong>land ministry.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Georgetown Advantage Section -->
+    <section class="section advantage">
+        <div class="advantage-content">
+            <h2>The Georgetown Advantage</h2>
+            <div class="story-text">
+                <p>Georgetown has everything needed to make this vision reality:</p>
+            </div>
+            
+            <div class="advantage-sections">
+                <div class="advantage-section">
+                    <h3>Academic Integration</h3>
+                    <ul>
+                        <li><strong>MAGIS Program:</strong> Youth Earth Stewardship internships</li>
+                        <li><strong>ESCAPE Retreats:</strong> Eco-contemplation programming</li>
+                        <li><strong>Research Partnerships:</strong> Collaboration with Environmental Studies on soil health, carbon sequestration, and sustainable practices</li>
+                    </ul>
+                </div>
+                <div class="advantage-section">
+                    <h3>Mission Alignment</h3>
+                    <ul>
+                        <li>Jesuit values of service and contemplation</li>
+                        <li>Pope Francis's environmental encyclical <em>Laudato Si'</em></li>
+                        <li>Georgetown's commitment to global leadership</li>
+                    </ul>
+                </div>
+                <div class="advantage-section">
+                    <h3>Strategic Positioning</h3>
+                    <ul>
+                        <li>Washington D.C. location for policy influence</li>
+                        <li>International visibility and reputation</li>
+                        <li>Alumni network for scaling impact</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ripple Effect Section -->
+    <section class="section ripple">
+        <div class="ripple-content">
+            <h2>The Ripple Effect</h2>
+            <div class="story-text">
+                <p>Success at Georgetown creates:</p>
+            </div>
+            <div class="ripple-items">
+                <div class="ripple-item">
+                    <h3>1. Global Model</h3>
+                    <p>Universities worldwide adopting regenerative contemplation</p>
+                </div>
+                <div class="ripple-item">
+                    <h3>2. Student Innovation</h3>
+                    <p>Graduates who see ecological and spiritual healing as unified work</p>
+                </div>
+                <div class="ripple-item">
+                    <h3>3. Policy Influence</h3>
+                    <p>D.C. location enabling direct impact on environmental and educational policy</p>
+                </div>
+                <div class="ripple-item">
+                    <h3>4. Cultural Shift</h3>
+                    <p>Demonstrating that higher education can lead planetary healing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment vs Transformation Section -->
+    <section class="section investment">
+        <div class="investment-content">
+            <h2>Investment vs. Transformation</h2>
+            <div class="story-text">
+                <p>This isn't about cost—it's about <strong>return on mission</strong>. While other universities struggle with student mental health, climate anxiety, and purpose deficits, Georgetown becomes the destination for students seeking education that matters.</p>
+            </div>
+            
+            <div class="projections">
+                <div class="projection-section">
+                    <h3>Conservative Projections</h3>
+                    <ul>
+                        <li>Increased retreat bookings through unique programming</li>
+                        <li>Student recruitment advantage in competitive market</li>
+                        <li>Research grants for innovative sustainability work</li>
+                        <li>Media attention establishing Georgetown as thought leader</li>
+                    </ul>
+                </div>
+                <div class="projection-section">
+                    <h3>Transformational Impact</h3>
+                    <ul>
+                        <li>Model adopted by universities globally</li>
+                        <li>Alumni network of ecological and spiritual leaders</li>
+                        <li>Policy influence on education and environment</li>
+                        <li>Cultural paradigm shift toward regenerative thinking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Lead Section -->
+    <section class="section call-to-lead">
+        <div class="call-content">
+            <h2>The Call to Lead</h2>
+            <div class="call-text">
+                <p>Georgetown University has a choice: remain an excellent traditional institution, or become the pioneer of education's future.</p>
+            </div>
+            <div class="choice-highlight">
+                <p>This isn't just a job proposal—it's an opportunity to pioneer the future of education.</p>
+            </div>
+            <div class="call-text">
+                <p>We're not just talking about maintaining 55 acres. We're talking about creating a living demonstration that spiritual depth and ecological health are inseparable. We're talking about graduates who see no difference between caring for souls and caring for soil.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="section next-steps">
+        <div class="steps-content">
+            <h2>Next Steps</h2>
+            <div class="story-text">
+                <p>I propose we begin with:</p>
+            </div>
+            
+            <div class="phases">
+                <div class="phase">
+                    <h3>Phase 1: Foundation (Months 1-6)</h3>
+                    <ul>
+                        <li>Comprehensive land assessment and regenerative design</li>
+                        <li>Partnership development with Indigenous educators</li>
+                        <li>Wildfire Mitigation and Pilot Biochar production</li>
+                        <li>Food Forest and Permaculture Plan</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>Phase 2: Integration (Months 6-18)</h3>
+                    <ul>
+                        <li>MAGIS program Earth Stewardship track launch</li>
+                        <li>First "Interfaith Earth Stewards Summit"</li>
+                        <li>Research collaboration initiation</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>Phase 3: Scaling (Year 2+)</h3>
+                    <ul>
+                        <li>Model documentation for university replication</li>
+                        <li>Policy engagement through D.C. presence</li>
+                        <li>Global network development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Commitment Section -->
+    <section class="section commitment">
+        <div class="commitment-content">
+            <h2>Personal Commitment</h2>
+            <div class="commitment-text">
+                <p>I'm not seeking employment—I'm seeking partnership in transformation. This work requires someone who sees land management as sacred calling, property care as spiritual practice, and Georgetown's mission as personally compelling.</p>
+            </div>
+            <div class="commitment-highlight">
+                <p><strong>I am that person.</strong></p>
+            </div>
+            <div class="commitment-text">
+                <p>Twenty-five years of preparation. A lifetime of calling. The perfect moment. The ideal institution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Vision Section -->
+    <section class="section final-vision">
+        <div class="final-content">
+            <h2>Let's Co-Create the Eden That Higher Education Has Been Waiting For</h2>
+            
+            <div class="final-text">
+                <p><strong>Why Georgetown, Why Now</strong></p>
+                <p>Georgetown already possesses everything needed for this vision: Jesuit values of contemplation and service, commitment to <em>cura personalis</em>, and 55 acres of beautiful land waiting to tell a deeper story.</p>
+                <p>This isn't about changing Georgetown's mission—it's about <strong>fulfilling it more completely</strong>.</p>
+                <p>We're not talking about revolution. We're talking about Georgetown becoming more Georgetown: more contemplative, more connected to creation, more aligned with Ignatian spirituality in practice.</p>
+            </div>
+
+            <div class="quote-section">
+                <p>"The Earth does not belong to us; we belong to the Earth. All things are connected like the blood that unites one family." — Chief Seattle</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact">
+        <div class="contact-content">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <h3>Bruce Weaver</h3>
+                <p>All-Inclusive Property Manager & Earth Steward</p>
+                <p><a href="https://bravenewearth.github.io/BruceWeaverTimeline/" target="_blank" style="color: #66d9aa; text-decoration: underline;">Bruce Weaver Work Timeline</a></p>
+                <p><strong>Location:</strong> Available for relocation to the Washington D.C. area</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Seed Planting Section -->
+    <section class="section seed-planting">
+        <div class="planting-content">
+            <h2>Plant Seeds of Transformation</h2>
+            <p class="planting-instruction">Click anywhere in the garden plot below to plant seeds of change</p>
+            <div class="garden-plot" onclick="plantSeed(event)"></div>
+            <div class="planted-counter">Seeds Planted: <span id="seedCount">0</span></div>
+            <p class="planting-meaning">Each seed represents a student whose life will be transformed by regenerative contemplation at Georgetown University</p>
+        </div>
+    </section>
+
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Generate floating particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Seed planting interaction
+        let seedCount = 0;
+        function plantSeed(event) {
+            const plot = event.currentTarget;
+            const rect = plot.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            
+            const seed = document.createElement('div');
+            seed.className = 'seed';
+            seed.style.left = x + 'px';
+            seed.style.top = y + 'px';
+            plot.appendChild(seed);
+            
+            setTimeout(() => {
+                seed.classList.add('sprouting');
+                seedCount++;
+                document.getElementById('seedCount').textContent = seedCount;
+            }, 200);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            
+            // Smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+    </script>
+</body>
+</html>

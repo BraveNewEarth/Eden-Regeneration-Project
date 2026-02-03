@@ -1,8 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Map } from 'lucide-react';
 import campusBg from '../assets/campus-bg.png';
+import mapBg from '../assets/hero-landscape.jpg';
 
 export default function Ask() {
+    const [showMap, setShowMap] = useState(false);
+
     return (
         <section className="relative py-32 text-white overflow-hidden">
             {/* Background Image */}
@@ -51,8 +55,12 @@ export default function Ask() {
                         </div>
                     </div>
 
-                    <button className="bg-accent hover:bg-accent/90 text-white px-10 py-5 rounded-full font-bold text-xl shadow-lg shadow-accent/25 transition-all transform hover:scale-105">
-                        Approve Feasibility Plan
+                    <button
+                        onClick={() => setShowMap(true)}
+                        className="bg-accent hover:bg-accent/90 text-white px-10 py-5 rounded-full font-bold text-xl shadow-lg shadow-accent/25 transition-all transform hover:scale-105 flex items-center gap-3 mx-auto"
+                    >
+                        <Map size={24} />
+                        Parcel Map View
                     </button>
                 </motion.div>
 
@@ -64,7 +72,6 @@ export default function Ask() {
                     className="mt-24 border-t border-white/20 pt-12 flex flex-col md:flex-row items-center justify-center gap-8 text-left max-w-2xl mx-auto"
                 >
                     <div className="w-16 h-16 bg-gray-300 rounded-full shrink-0 overflow-hidden">
-                        {/* Placeholder for Bruce's face if we had it, or initials */}
                         <div className="w-full h-full bg-slate-700 flex items-center justify-center text-xl font-bold">BW</div>
                     </div>
                     <div>
@@ -76,6 +83,42 @@ export default function Ask() {
                     </div>
                 </motion.div>
             </div>
+
+            {/* Map Modal */}
+            <AnimatePresence>
+                {showMap && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+                        onClick={() => setShowMap(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="relative max-w-6xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setShowMap(false)}
+                                className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+                            <img
+                                src={mapBg}
+                                alt="Parcel Map View"
+                                className="w-full h-full object-contain max-h-[85vh]"
+                            />
+                            <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white p-4 text-center backdrop-blur-sm">
+                                <p className="font-semibold">Full Parcel View: Zone A (CCC) + Zone B (High Meadows & North Parcel)</p>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }

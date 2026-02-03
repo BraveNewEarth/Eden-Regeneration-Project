@@ -98,22 +98,24 @@ export default function Ask() {
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative max-w-6xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative max-w-6xl w-full bg-zinc-900 rounded-2xl shadow-2xl p-4 md:p-8"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button
                                 onClick={() => setShowMap(false)}
-                                className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+                                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors"
                             >
                                 <X size={24} />
                             </button>
-                            <img
-                                src={mapBg}
-                                alt="Parcel Map View"
-                                className="w-full h-full object-contain max-h-[85vh]"
-                            />
-                            <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white p-4 text-center backdrop-blur-sm">
-                                <p className="font-semibold">Full Parcel View: Zone A (CCC) + Zone B (High Meadows & North Parcel)</p>
+                            <div className="rounded-xl overflow-hidden relative">
+                                <img
+                                    src={mapBg}
+                                    alt="Parcel Map View"
+                                    className="w-full h-full object-cover max-h-[80vh]"
+                                />
+                                <div className="absolute bottom-0 inset-x-0 bg-black/60 text-white p-4 text-center backdrop-blur-sm">
+                                    <p className="font-semibold">Full Parcel View: Zone A (CCC) + Zone B (High Meadows & North Parcel)</p>
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>

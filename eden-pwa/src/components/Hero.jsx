@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import heroBg from '../assets/hero-landscape.jpg';
 
 export default function Hero() {
     return (
@@ -8,7 +9,7 @@ export default function Hero() {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/assets/hero-landscape.jpg"
+                    src={heroBg}
                     alt="Eden Regeneration Project"
                     className="w-full h-full object-cover"
                 />

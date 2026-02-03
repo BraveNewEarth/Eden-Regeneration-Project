@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import campusBg from '../assets/campus-bg.png';
 
 export default function Ask() {
     return (
@@ -7,7 +8,7 @@ export default function Ask() {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/assets/campus-bg.png"
+                    src={campusBg}
                     alt="High Meadows Estate"
                     className="w-full h-full object-cover"
                 />

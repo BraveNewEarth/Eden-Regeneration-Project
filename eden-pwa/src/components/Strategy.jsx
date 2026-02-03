@@ -109,7 +109,15 @@ export default function Strategy() {
                             <div className="space-y-6">
                                 <div className="bg-white/50 p-6 rounded-xl border border-accent/20">
                                     <h4 className="font-bold text-lg text-text mb-2 flex items-center gap-2">
-                                        <Leaf size={18} className="text-accent" /> High Meadows Estate
+                                        <Leaf size={18} className="text-accent" />
+                                        <a
+                                            href="https://www.artisanproperties.org/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:underline hover:text-accent transition-colors"
+                                        >
+                                            High Meadows Estate
+                                        </a>
                                     </h4>
                                     <p className="text-text/70 text-sm">
                                         The Heart. 14 acres. Pilot food production, demonstration gardens, and PhD-level regenerative education.
@@ -127,6 +135,27 @@ export default function Strategy() {
                         </div>
                     </motion.div>
                 </div>
+                {/* Video Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="mt-16 max-w-4xl mx-auto"
+                >
+                    <div className="text-center mb-8">
+                        <h3 className="text-2xl font-bold text-text mb-2">See the Vision in Action</h3>
+                    </div>
+                    <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-video bg-black">
+                        <iframe
+                            src="https://www.youtube.com/embed/GurbrtlGghU?rel=0"
+                            title="Eden Regeneration Project Vision"
+                            className="absolute top-0 left-0 w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

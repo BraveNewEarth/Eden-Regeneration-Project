@@ -6,7 +6,7 @@ const phases = [
         id: "1",
         name: "Prove It",
         time: "Days 1–90",
-        description: "Authorize a small feasibility team to deliver: baseline site data, pilot plot plan for High Meadows, cost ranges, and governance framework."
+        description: (<span>Authorize a small feasibility team to deliver: baseline site data, pilot plot plan for <a href="https://www.artisanproperties.org/" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:text-accent/80 font-semibold">High Meadows</a>, cost ranges, and governance framework.</span>)
     },
     {
         id: "2",

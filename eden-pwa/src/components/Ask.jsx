@@ -34,7 +34,16 @@ export default function Ask() {
                         </div>
                         <div className="glass-card bg-white/10 border-white/20 p-6 backdrop-blur-md">
                             <h3 className="font-bold text-secondary mb-2">Zone B: Heart</h3>
-                            <p className="text-sm">High Meadows becomes the regenerative heart.</p>
+                            <p className="text-sm">
+                                <a
+                                    href="https://www.artisanproperties.org/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-accent underline hover:text-accent/80 transition-colors"
+                                >
+                                    High Meadows
+                                </a> becomes the regenerative heart.
+                            </p>
                         </div>
                         <div className="glass-card bg-white/10 border-white/20 p-6 backdrop-blur-md">
                             <h3 className="font-bold text-primary mb-2">Zone B: Engine</h3>

@@ -13,7 +13,7 @@ const pillars = [
     {
         title: "Living Laboratory",
         description: "Georgetown stops merely analyzing problems. It starts field-testing solutions.",
-        details: "High Meadows as a demonstation campus. Soil health, biodiversity, and energy feasibility running as live, documented experiments.",
+        details: (<span><a href="https://www.artisanproperties.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800 font-semibold">High Meadows</a> as a demonstation campus. Soil health, biodiversity, and energy feasibility running as live, documented experiments.</span>),
         icon: Microscope,
         color: "bg-blue-500"
     },
